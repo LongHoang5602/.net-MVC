@@ -1,0 +1,62 @@
+﻿@model Web.Models.Products
+
+@{
+    Layout = "~/Views/Shared/_LayoutWeb.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+    
+</head>
+
+<body>
+    <section class="shop_section layout_padding">
+        <div class="container">
+            <div class="heading_container heading_center">
+                <h2>
+                    Information
+                </h2>
+            </div>
+            <div class="row" style="display: flex ;flex-wrap: inherit;">
+
+
+                <div class="col-sm-6 col-xl-3">
+                    <div class="box">
+                        <a href="">
+
+                            <div class="img-box">
+                           
+                                <img src="@Html.DisplayFor(model => model.ImageProduct)" alt="">
+                            </div>
+                            <div class="detail-box">
+                                <h6>
+                                    @Html.DisplayFor(model => model.ProductName)
+                                </h6>
+                                <h6>
+                                    Price:
+                                    <span>
+                                        @Html.DisplayFor(model => model.ProductPrice)
+                                    </span>
+                                </h6>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="description" style="text-align: center; position: relative; top: 40px; FONT-SIZE: 1.4em;">
+                    <span>@Html.DisplayFor(model => model.ProductDescription)</span>
+                </div>
+
+            </div>
+            <div class="btn-box">
+                <a href="@Url.Action("AddCart","product" , new {id= Model.ProductId})">
+                    Buy Now
+                </a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

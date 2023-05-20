@@ -1,0 +1,166 @@
+﻿@using Web.Models
+@model IEnumerable<Web.Models.Products>
+@{
+    ViewBag.Title = "Your Basket";
+    Layout = "~/Views/Shared/_LayoutWeb.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div class="titleBasket">
+        <h3>Your Cart</h3>
+    </div>
+
+    <div class="mainBasket" style="border-bottom: 1px solid #808080;">
+        @if (Session["cart"] == null)
+        {
+            <p>
+                Empty product in Cart
+            </p>
+        }
+        else
+        {
+            <div class="row">
+                @foreach (Item item in (List<Item>)Session["cart"])
+                {
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="boxCart">
+                            <a href="">
+
+                                <div class="img-box">
+                                    <img src="@item.products.ImageProduct" alt="" height="200px">
+                                    <a class="btn-remove" href="@Url.Action("RemoveCart", "Product", new { id = item.products.ProductId})"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                </div>
+                                <div class="detail-box">
+                                    @if (item.products.ProductId > 10 && item.products.ProductId < 15)
+                                    {
+                                       
+                                    }
+                                    <h6>
+                                        Name:
+                                        @item.products.ProductName
+                                    </h6>
+                                    <h6>
+                                        Price:
+                                        <span>
+                                            @item.products.ProductPrice
+                                        </span>
+                                    </h6>
+                                    <h6>
+                                        Quantity:
+                                        <span>
+                                            @item.Quantity;
+                                        </span>
+                                    </h6>
+                                    <form action="/Product/UpdateCart" method="post">
+                                        <input type="number" min="1" name="Quantity" value="@item.Quantity" />
+                                        <input type="hidden" value="@item.products.ProductId" name="ProductId" />
+                                        <input type="submit" value="Update" />
+                                    </form>
+                                    <p> @(item.products.ProductPrice * item.Quantity) </p>
+
+                                </div>
+
+
+
+                            </a>
+                        </div>
+
+                    </div>
+                }
+
+
+            </div>
+
+            <div class="All-Price">
+                Total:
+                @{List<Item> cart = (List<Item>)Session["cart"];
+                    var total = cart.Sum(item => item.products.ProductPrice * item.Quantity); }
+                @total
+            </div>
+        }
+        <a class="btn-buy" href="">Buy</a>
+
+        <a class="btn-basket" href="@Url.Action("Index", "Product")">Continue Shopping</a>
+        <a class="btn-basket" href="@Url.Action("RemoveAll", "Product")">Remove All</a>
+
+    </div>
+       
+
+
+
+
+
+
+
+
+
+        <style>
+            .titleBasket {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+            }
+
+
+
+            .mainBasket {
+                width: 80%;
+                /*border-bottom: 1px solid #808080;*/
+                position: relative;
+                left: 10%;
+            }
+
+            .boxCart {
+                background-color: #F6F1E9;
+                margin: 0;
+                padding: 10px 10px 10px 20px;
+                border-radius: 10px;
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+                justify-content: space-around;
+            }
+
+            .btn-remove {
+                position: absolute;
+                top: 0;
+                right: 30px;
+                color: #000f;
+            }
+
+            .All-Price {
+                position: relative;
+                top: 30px;
+                
+            }
+
+            .btn-basket {
+                position: relative;
+                top: 150px;
+                left: 42%;
+                padding: 5px 5px;
+                border-radius:20px;
+                background-color: #CE5959;
+                color: #F6F1E9;
+            }
+
+            .btn-buy {
+                position: relative;
+                top: 35px;
+                border-radius: 10px;
+                padding: 5px 15px;
+                background-color: #FF8400;
+                color: #F6F1E9;
+            }
+
+        </style>
+
+</body>
+</html>

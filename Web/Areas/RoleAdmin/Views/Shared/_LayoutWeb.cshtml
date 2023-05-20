@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/Content/js")
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+
+
+</head>
+<body>              
+        <!-- header section strats -->
+        <header class="header_section">
+            <div class="container-fluid">
+                <nav class="navbar navbar-expand-lg custom_nav-container ">
+                    <a class="navbar-brand" href="index.html">
+                        <span>
+                            <img src="~/Content/images/logo.png" height=100px />
+                        </span>
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class=""> </span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        
+                        <div class="user_option-box">
+                            @Html.Partial("_LoginPartial")
+                            <a href="">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </a>
+
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+
+        
+        @RenderBody()
+        @RenderSection("scripts", required: false)
+
+</body>
+</html>

@@ -1,0 +1,270 @@
+﻿@model IEnumerable<Web.Models.Products>
+
+@{
+    ViewBag.Title = "IndexHome";
+    Layout = "~/Views/Shared/_LayoutWeb.cshtml";
+
+}
+
+<div class="hero_area">
+    <div class="hero_social">
+        <a href="">
+            <i class="fa fa-facebook" aria-hidden="true"></i>
+        </a>
+        <a href="">
+            <i class="fa fa-twitter" aria-hidden="true"></i>
+        </a>
+        <a href="">
+            <i class="fa fa-linkedin" aria-hidden="true"></i>
+        </a>
+        <a href="">
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+        </a>
+    </div>
+    <section class="slider_section ">
+        <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="container-fluid ">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="detail-box">
+                                    <h1>
+                                        The Air Force 1
+                                    </h1>
+                                    <p>
+                                        Take your love for the game with you wherever you go. Crossing hardwood comfort with off-court flair, these kicks put a fresh spin on a hoops classic with washed-out neon colours and classic paisley print.
+                                    </p>
+                                    <div class="btn-box">
+                                        <a href="" class="btn1">
+                                            Contact Us
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="img-box">
+                                    <img src="~/Content/images/NikeShoe.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item ">
+                    <div class="container-fluid ">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="detail-box">
+                                    <h1>
+                                        The B27 low-top sneaker
+                                    </h1>
+                                    <p>
+                                        The B27 low-top sneaker is already a House essential. Crafted in brown and deep gray smooth calfskin, the style is adorned with brown Dior Oblique Galaxy leather inserts on the sides. The sneaker is enhanced by the AsteroDior signature, inspired by 1970s space operas and channeling an intergalactic desert universe, as well as CD Icon eyelets and numerous hallmark details on the two-tone rubber sole, tab and back. The low-top sneaker will enhance any favorite outfit.
+                                    </p>
+                                    <div class="btn-box">
+                                        <a href="" class="btn1">
+                                            Contact Us
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="img-box">
+                                    <img src="~/Content/images/DiorShoe.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item ">
+                    <div class="container-fluid ">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="detail-box">
+                                    <h1>
+                                        ULTRABOOST LIGHT RUNNING SHOES
+                                    </h1>
+                                    <p>
+                                        This product is excluded from all promotional discounts and offers. Try this shoe for 30 days and return hassle-free with our performance running shoe return guarantee.
+                                    </p>
+                                    <div class="btn-box">
+                                        <a href="" class="btn1">
+                                            Contact Us
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="img-box">
+                                    <img src="~/Content/images/Adidas.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ol class="carousel-indicators">
+                <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
+                <li data-target="#customCarousel1" data-slide-to="1"></li>
+                <li data-target="#customCarousel1" data-slide-to="2"></li>
+            </ol>
+        </div>
+
+    </section>
+</div>
+<section class="shop_section layout_padding">
+    <div class="container">
+        <div class="heading_container heading_center">
+            <h2>
+                Latest
+            </h2>
+
+        </div>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+
+            <div class="col-sm-6 col-xl-3">
+                <div class="box">
+                    <a href="">
+
+                        @Html.ActionLink("Details", "Details", "Product", new { id = item.ProductId }, new { @class = "btn-details" })
+
+                        <div class="img-box">
+                            <img src="@item.ImageProduct" alt="">
+                        </div>
+                        <div class="detail-box">
+                            <h6>
+                                @item.ProductName
+
+                            </h6>
+                            <h6>
+                                Price:
+                                <span>
+                                    @item.ProductPrice
+                                </span>
+                            </h6>
+                        </div>
+                        @if (item.ProductId > 10 && item.ProductId < 15)
+                        {
+
+                        }
+
+
+                    </a>
+                </div>
+                <div style="margin-left:120px;margin-top:10px">
+                    @Html.ActionLink("Buy", "AddCart", "Product", new { id = item.ProductId }, new { @class = "btn-addbasket" })
+
+                </div>
+            </div>
+
+
+            }
+        </div>
+        
+    </div>
+</section>
+
+
+
+
+
+<!-- end client section -->
+<!-- footer section -->
+<footer class="footer_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-3 footer-col">
+                <div class="footer_detail">
+                    <h4>
+                        About
+                    </h4>
+                    <p>
+                        Necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with
+                    </p>
+                    <div class="footer_social">
+                        <a href="">
+                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                        </a>
+                        <a href="">
+                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                        </a>
+                        <a href="">
+                            <i class="fa fa-linkedin" aria-hidden="true"></i>
+                        </a>
+                        <a href="">
+                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 footer-col">
+                <div class="footer_contact">
+                    <h4>
+                        Reach at..
+                    </h4>
+                    <div class="contact_link_box">
+                        <a href="">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <span>
+                                Location
+                            </span>
+                        </a>
+                        <a href="">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            <span>
+                                Call +01 1234567890
+                            </span>
+                        </a>
+                        <a href="">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            <span>
+                                demo@gmail.com
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 footer-col">
+                <div class="footer_contact">
+                    <h4>
+                        Subscribe
+                    </h4>
+                    <form action="#">
+                        <input type="text" placeholder="Enter email" />
+                        <button type="submit">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 footer-col">
+                <div class="map_container">
+                    <div class="map">
+                        <div id="googleMap"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-info">
+            <p>
+                &copy; <span id="displayYear"></span> All Rights Reserved By
+                <a href="https://html.design/">Free Html Templates</a>
+            </p>
+        </div>
+    </div>
+</footer>
+<!-- footer section -->
+<!-- jQery -->
+<script src="js/jquery-3.4.1.min.js"></script>
+<!-- popper js -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+</script>
+<!-- bootstrap js -->
+<script src="js/bootstrap.js"></script>
+<!-- owl slider -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+</script>
+<!-- custom js -->
+<script src="js/custom.js"></script>

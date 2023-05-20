@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Web.Models.Products>
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_LayoutWeb.cshtml";
+}
+
+@using (Html.BeginForm("Search", "Product", FormMethod.Get))
+{
+ 
+}
+
+@if (Model.Any())
+{
+  <body>
+      <section class="shop_section layout_padding">
+          <div class="container">
+              <div class="heading_container heading_center">
+                  <h2>
+                      Find Product
+                  </h2>
+              </div>
+              <div class="row">
+                  @foreach (var item in Model)
+                  {
+
+                      <div class="col-sm-6 col-xl-3">
+                          <div class="box">
+
+                              <a href="">
+                                  <div class="img-box">
+                                      <img src="@item.ImageProduct" alt="">
+                                  </div>
+                                  <div class="detail-box">
+                                      <h6>
+                                          @item.ProductName
+                                      </h6>
+                                      <h6>
+                                          Price:
+                                          <span>
+                                              @item.ProductPrice
+                                          </span>
+                                      </h6>
+                                  </div>
+                                  @if (item.ProductId > 10 && item.ProductId < 15)
+                                  {
+                                      <div class="new">
+                                          <span>
+                                              New
+                                          </span>
+                                      </div>
+                                  }
+                              </a>
+                          </div>
+                      </div>
+
+
+                  }
+              </div>
+
+          </div>
+      </section>
+
+
+
+
+
+
+  </body>
+}
+else
+{
+    <p>No results found.</p>
+}
